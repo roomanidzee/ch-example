@@ -1,0 +1,39 @@
+[[package]]
+category = "main"
+description = "Python driver with native interface for ClickHouse"
+name = "clickhouse-driver"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.1.2"
+
+[package.dependencies]
+pytz = "*"
+tzlocal = "*"
+
+[[package]]
+category = "main"
+description = "World timezone definitions, modern and historical"
+name = "pytz"
+optional = false
+python-versions = "*"
+version = "2019.3"
+
+[[package]]
+category = "main"
+description = "tzinfo object for the local timezone"
+name = "tzlocal"
+optional = false
+python-versions = "*"
+version = "2.0.0"
+
+[package.dependencies]
+pytz = "*"
+
+[metadata]
+content-hash = "6167bf49cca65fa10f083c18e458a4ca61cac37e3a0e3e9391e2d2a01f46d4f1"
+python-versions = "^3.7"
+
+[metadata.hashes]
+clickhouse-driver = ["0831a93759f7fc576b49c5c9b70e8ca35a72a327f28fa84248268119e51be309", "249eab1f45cfe111a669dcf6586987a8da9cebea1864e36a7d1315fc5d600a53", "2b7b890b812a2a83dd14f5345b6d06d58f058b5f53bfbe84525fc914932deaf7", "2fb45f4a9fda53887f4504e7846e9428ea2146f39747ec26e4611221b112511b", "36ce63f8679e09f1b2e627c17cc26c7f40b69e69c21bb8c642241f855071f3b7", "3d120b85ba785a4141c8d5e89f114ec66f405d53f335897abaa982f0a412f758", "439da03af2c223bc73c830634c15217aae502d39a7cfd2e3d67f3de97174a428", "5310cff52fd19453d6c0fdd11384d139a1291c921084333d23d44cbd02d14081", "639e38fe82ebdd7d48cb501e2bbdcb4d4ccb833b2cb4095ba163f244c15e7a0e", "654e5026509e8c78e8ac767aaf8375bfd49588a5c1aec1697f9693558e6788e9", "733479f888c7021cb80f5a94a9e50898318f44a7af798e2d012296cc0b75ee4e", "7d3ea3e7f8b2de3b88522901447ed73922d3c86fb3291192c8d0b04c1b818d4d", "9adf449a13198c06d87a089fdbfe5b6d96ef95d5fc6a741c926533c8fff8b365", "9d74645e24a1539984a1ca206a74d63246284afad49809c4f321e1c3491daaa4", "9e8c8db399ee59a0cba729b5a4e54074c3475cc8f3d0784ddc7eaf0bfc6b5d0b", "a8145c1fcb7b13ff2a3bfdee3a1a459b7d1535fabd57128f3c93133cd7493c1d", "abdcfe24881257a5a4a5a67c41163fd34cc18e8bd17f6fe2439f79abd43c62ae", "bdd963d7223faa9ccc54cec4511aace876dd87994602ce12cc1410826d60a4e5", "c40a96b02b56f08112631124883dad885e80755668856f78c57889213208587d", "c5b39b521e15071dd7be02b9c26c1dff38f470caf976740ccd1a21e9f2a110e1", "ca93e180fbe580adeff3f2fc3f2361bf4554c09a18208f487e5454cfc43d5560", "cf5066136b6b32650e60528ed1e93e49b17001ef00038046e6161cf3b9c2b714", "d0dcdad9806b9462b7ad5dddb3fd469d1e2c91adbc1e8dccca55f1a25cdd4ad0", "e540f32ab5e77b04c76fa07d72d98d2e78d71697c26558b54a02e00607bb098c", "ed457cdebb8852bd2551300b1a681e078c4c01dccb1244fbb324cb63dbc0c3b3", "fa037fdafd864cbe5b8d55b14da3cd7e5e734b543629a10da638d2b87056e37f"]
+pytz = ["1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d", "b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be"]
+tzlocal = ["11c9f16e0a633b4b60e1eede97d8a46340d042e67b670b290ca526576e039048", "949b9dd5ba4be17190a80c0268167d7e6c92c62b30026cf9764caf3e308e5590"]
