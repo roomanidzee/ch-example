@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  ch-server:
+
+    image: 'yandex/clickhouse-server:19.14.6.12'
+
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+
+    container_name: ch-server
+
+    volumes:
+      - './clickhouse/sql:/docker-entrypoint-initdb.d'

@@ -8,6 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.7"
 clickhouse-driver = "^0.1.2"
+layered-yaml-attrdict-config = "^18.12"
 
 [tool.poetry.dev-dependencies]
 

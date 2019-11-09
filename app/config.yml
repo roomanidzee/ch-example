@@ -1,0 +1,4 @@
+
+clickhouse:
+  host: localhost
+  port: 8123
