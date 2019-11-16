@@ -9,31 +9,6 @@ from clickhouse_driver import Client
 config = lya.AttrDict.from_yaml('config.yml')
 ch_config = config['clickhouse']
 
-from logging.config import dictConfig
-dictConfig({
-     'version': 1,
-     'disable_existing_loggers': False,
-     'formatters': {
-         'standard': {
-             'format': '%(asctime)s %(levelname)-8s %(name)s: %(message)s'
-         },
-     },
-     'handlers': {
-         'default': {
-             'level': 'INFO',
-             'formatter': 'standard',
-             'class': 'logging.StreamHandler',
-         },
-     },
-     'loggers': {
-         '': {
-             'handlers': ['default'],
-             'level': 'INFO',
-             'propagate': True
-         },
-     }
-})
-
 
 class MatchTypeEnum(IntEnum):
     """Перечисление для хранения типов матча"""
