@@ -14,6 +14,6 @@ CREATE TABLE test_db.football_table(
 
 )
 ENGINE = MergeTree
-PARTITION BY record_time
+PARTITION BY CAST(match_type, 'Int8')
 ORDER BY (match_type, record_time)
 TTL match_date + INTERVAL 3 DAY;

@@ -1,13 +1,9 @@
 import time
 import random
+import csv
+
 from enum import IntEnum
 from datetime import datetime
-
-import lya
-from clickhouse_driver import Client
-
-config = lya.AttrDict.from_yaml('config.yml')
-ch_config = config['clickhouse']
 
 
 class MatchTypeEnum(IntEnum):
@@ -20,42 +16,49 @@ class MatchTypeEnum(IntEnum):
 def generate_data():
     """Метод для генерации тестовых данных ClickHouse"""
 
-    input_data = []
     limit = 1_000_000
 
     print('Генерируем данные')
 
-    for _ in range(limit):
+    with open('../docker/clickhouse/data.csv', 'w') as csv_file:
 
-        random_value = random.randint(1, int(time.time()))
-        time_obj = datetime.fromtimestamp(random_value)
+        data_writer = csv.writer(csv_file, delimiter=',')
+        columns = [
+            'match_date',
+            'record_time',
+            'home_country',
+            'guest_country',
+            'home_score',
+            'guest_score',
+            'match_type',
+            'match_city',
+            'match_country'
+        ]
+        data_writer.writerow(columns)
 
-        input_data.append({
-            'match_date': time_obj.date(),
-            'record_time': time_obj,
-            'home_country': f'Country #{random.randint(1, limit)}',
-            'guest_country': f'Country #{random.randint(1, limit)}',
-            'home_score': random.randrange(0, 20),
-            'guest_score': random.randrange(0, 20),
-            'match_type': random.choice(
-                [MatchTypeEnum.friendly, MatchTypeEnum.uefa, MatchTypeEnum.fifa]
-            ),
-            'match_city': f'City #{random.randint(1, limit)}',
-            'match_country': f'Country #{random.randint(1, limit)}'
-        })
+        for _ in range(limit):
+            random_value = random.randint(1, int(time.time()))
+            time_obj = datetime.fromtimestamp(random_value)
 
-    settings = {'send_logs_level': 'debug'}
-    client = Client(**ch_config)
+            data_writer.writerow([
+                time_obj.date().strftime("%Y-%m-%d"),
+                time_obj.strftime("%Y-%m-%d %H:%M:%S"),
+                f'Country #{random.randint(1, limit)}',
+                f'Country #{random.randint(1, limit)}',
+                random.randrange(0, 20),
+                random.randrange(0, 20),
+                random.choice(
+                    [
+                        MatchTypeEnum.friendly.name,
+                        MatchTypeEnum.uefa.name,
+                        MatchTypeEnum.fifa.name
+                    ]
+                ),
+                f'City #{random.randint(1, limit)}',
+                f'Country #{random.randint(1, limit)}'
+            ])
 
-    print('Начинаем вставлять данные..')
-
-    query = '''
-    INSERT INTO test_db.football_table 
-    (match_date, record_time, home_country, guest_country, home_score, guest_score, math_type, match_city, match_country)
-    VALUES
-    '''
-
-    client.execute_with_progress(query, input_data, types_check=True, settings=settings)
+    print('CSV сгенерирован')
 
 
 if __name__ == '__main__':

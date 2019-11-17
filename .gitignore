@@ -43,6 +43,7 @@
 .vscode
 *env
 *_env
+*.csv
 
 # CMake
 cmake-build-*/
